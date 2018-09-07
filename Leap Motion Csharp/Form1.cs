@@ -24,9 +24,9 @@ namespace WinFormSample
         {
             InitializeComponent();
             controller.EventContext = WindowsFormsSynchronizationContext.Current;
-            controller.FrameReady += newFrameHandler;
-            controller.ImageReady += onImageReady;
-            controller.ImageRequestFailed += onImageRequestFailed;
+            controller.FrameReady += NewFrameHandler;
+            controller.ImageReady += OnImageReady;
+            controller.ImageRequestFailed += OnImageRequestFailed;
 
             //set greyscale palette for image Bitmap object
             ColorPalette grayscale = bitmap.Palette;
@@ -37,7 +37,7 @@ namespace WinFormSample
             bitmap.Palette = grayscale;
         }
 
-        void newFrameHandler(object sender, FrameEventArgs eventArgs)
+        void NewFrameHandler(object sender, FrameEventArgs eventArgs)
         {
             Frame frame = eventArgs.frame;
             //The following are Label controls added in design view for the form
@@ -49,7 +49,7 @@ namespace WinFormSample
             controller.RequestImages(frame.Id, Leap.Image.ImageType.DEFAULT, imagedata);
         }
 
-        void onImageRequestFailed(object sender, ImageRequestFailedEventArgs e)
+        void OnImageRequestFailed(object sender, ImageRequestFailedEventArgs e)
         {
             if (e.reason == Leap.Image.RequestFailureReason.Insufficient_Buffer)
             {
@@ -58,7 +58,7 @@ namespace WinFormSample
             Console.WriteLine("Image request failed: " + e.message);
         }
 
-        void onImageReady(object sender, ImageEventArgs e)
+        void OnImageReady(object sender, ImageEventArgs e)
         {
             Rectangle lockArea = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
             BitmapData bitmapData = bitmap.LockBits(lockArea, ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
@@ -68,9 +68,6 @@ namespace WinFormSample
             displayImages.Image = bitmap;
         }
 
-        private void FrameDataForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+
