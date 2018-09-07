@@ -17,6 +17,6 @@ What have inMoov hand :
 Before you start, you must have :
  * Drivers for Leap Motion and Leap Motion SDK (all information you can get of [this](https://developer.leapmotion.com/documentation/))
  * If you white on C#, you must to download [V3 Software](https://developer.leapmotion.com/releases/leap-motion-orion-321) and include ```LeapCSharp.NET4.0.dll``` or ```LeapCSharp.NET4.5.dll```.
- * For some fun you can see what`s hapend in ```Leap Motion Visualizer``` or ```Leap Motion Diagnostic Visualizer```
+ * For some fun you can see what`s hapend in ```Leap Motion Visualizer``` or ```Leap Motion Diagnostic Visualizer```.
 
 I start with this https://developer-archive.leapmotion.com/documentation/csharp/devguide/Project_Setup.html and at the moment I haven`t any my code.
