@@ -80,7 +80,6 @@
             this.displayImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.displayImages.TabIndex = 4;
             this.displayImages.TabStop = false;
-            this.displayImages.Click += new System.EventHandler(this.displayImages_Click);
             // 
             // debugText
             // 
