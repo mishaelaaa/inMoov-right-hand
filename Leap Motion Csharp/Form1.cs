@@ -11,63 +11,92 @@ using System.Threading;
 using System.Drawing.Imaging;
 using Leap;
 
-namespace WinFormSample
+namespace Leap_Motion_Csharp
 {
-    public partial class FrameDataForm : Form
+    public partial class Form1 : Form//, ILeapEventDelegate
     {
+        private Controller controller;
+        private LeapEventListener listener;
 
-        private byte[] imagedata = new byte[1];
-        private Controller controller = new Controller();
-        Bitmap bitmap = new Bitmap(640, 480, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
-
-        public FrameDataForm()
+        public Form1()
         {
             InitializeComponent();
-            controller.EventContext = WindowsFormsSynchronizationContext.Current;
-            controller.FrameReady += NewFrameHandler;
-            controller.ImageReady += OnImageReady;
-            controller.ImageRequestFailed += OnImageRequestFailed;
 
-            //set greyscale palette for image Bitmap object
-            ColorPalette grayscale = bitmap.Palette;
-            for (int i = 0; i < 256; i++)
+            this.controller = new Controller();
+            this.listener = new LeapEventListener(this);
+            //controller.AddListener(listener);
+        }
+
+        delegate void LeapEventDelegate(string EventName);
+        public void LeapEventNotification(string EventName)
+        {
+            if (!this.InvokeRequired)
             {
-                grayscale.Entries[i] = Color.FromArgb((int)255, i, i, i);
+                switch (EventName)
+                {
+                    case "onInit":
+                        MessageBox.Show("Initialized");
+                        break;
+
+                    case "onConnect":
+                        MessageBox.Show("Leap connected");
+                        break;
+
+                    case "onFrame":
+                        MessageBox.Show("Frame taken");
+                        break;
+                }
             }
-            bitmap.Palette = grayscale;
-        }
-
-        void NewFrameHandler(object sender, FrameEventArgs eventArgs)
-        {
-            Frame frame = eventArgs.frame;
-            //The following are Label controls added in design view for the form
-            this.displayID.Text = frame.Id.ToString();
-            this.displayTimestamp.Text = frame.Timestamp.ToString();
-            this.displayFPS.Text = frame.CurrentFramesPerSecond.ToString();
-            this.displayHandCount.Text = frame.Hands.Count.ToString();
-
-            controller.RequestImages(frame.Id, Leap.Image.ImageType.DEFAULT, imagedata);
-        }
-
-        void OnImageRequestFailed(object sender, ImageRequestFailedEventArgs e)
-        {
-            if (e.reason == Leap.Image.RequestFailureReason.Insufficient_Buffer)
+            else
             {
-                imagedata = new byte[e.requiredBufferSize];
+                BeginInvoke(new LeapEventDelegate(LeapEventNotification), new object[] { EventName });
             }
-            Console.WriteLine("Image request failed: " + e.message);
         }
+    }
 
-        void OnImageReady(object sender, ImageEventArgs e)
+    public interface ILeapEventDelegate
+    {
+        void LeapEventNotiofination(string EventName);
+    }
+
+    public class LeapEventListener : ConsoleTraceListener
+    {
+        readonly ILeapEventDelegate eventDelegate;
+        
+        public LeapEventListener(ILeapEventDelegate delegateObject)
         {
-            Rectangle lockArea = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
-            BitmapData bitmapData = bitmap.LockBits(lockArea, ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
-            byte[] rawImageData = imagedata;
-            System.Runtime.InteropServices.Marshal.Copy(rawImageData, 0, bitmapData.Scan0, e.image.Width * e.image.Height * 2 * e.image.BytesPerPixel);
-            bitmap.UnlockBits(bitmapData);
-            displayImages.Image = bitmap;
+            this.eventDelegate = delegateObject;
         }
 
+        public LeapEventListener(Form1 form1)
+        {
+        }
+
+        public override void OnInit(Controller controller)
+        {
+            this.eventDelegate.LeapEventNotiofination("onInit");
+        }
+
+        public override void OnConnect(Controller controller)
+        {
+            this.eventDelegate.LeapEventNotiofination("OnConnect");
+        }
+
+        public override void OnFrame(Controller controller)
+        {
+            this.eventDelegate.LeapEventNotiofination("OnFrame");
+        }
+
+
+        public override void OnExit(Controller controller)
+        {
+            this.eventDelegate.LeapEventNotiofination("OnExit");
+        }
+
+        public override void OnDisconnect(Controller controller)
+        {
+            this.eventDelegate.LeapEventNotiofination("OnDisconnect");
+        }
     }
 }
 
