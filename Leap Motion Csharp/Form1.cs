@@ -24,7 +24,12 @@ namespace Leap_Motion_Csharp
 
             this.controller = new Controller();
             this.listener = new LeapEventListener(this);
-            //controller.AddListener(listener);
+            NewMethod();
+        }
+
+        private void NewMethod()
+        {
+            controller.AddListener(listener);
         }
 
         delegate void LeapEventDelegate(string EventName);
@@ -54,49 +59,23 @@ namespace Leap_Motion_Csharp
         }
     }
 
-    public interface ILeapEventDelegate
-    {
-        void LeapEventNotiofination(string EventName);
-    }
-
     public class LeapEventListener : ConsoleTraceListener
     {
+        public LeapEventListener(Form1 form1) { }
+
         readonly ILeapEventDelegate eventDelegate;
+
+        public LeapEventListener(ILeapEventDelegate delegateObject) => this.eventDelegate = delegateObject;
         
-        public LeapEventListener(ILeapEventDelegate delegateObject)
-        {
-            this.eventDelegate = delegateObject;
-        }
+        public override void OnInit(Controller controller) => this.eventDelegate.LeapEventNotiofination("onInit");
 
-        public LeapEventListener(Form1 form1)
-        {
-        }
+        public override void OnConnect(Controller controller) => this.eventDelegate.LeapEventNotiofination("OnConnect");
 
-        public override void OnInit(Controller controller)
-        {
-            this.eventDelegate.LeapEventNotiofination("onInit");
-        }
+        public override void OnFrame(Controller controller) => this.eventDelegate.LeapEventNotiofination("OnFrame");
 
-        public override void OnConnect(Controller controller)
-        {
-            this.eventDelegate.LeapEventNotiofination("OnConnect");
-        }
+        public override void OnExit(Controller controller) => this.eventDelegate.LeapEventNotiofination("OnExit");
 
-        public override void OnFrame(Controller controller)
-        {
-            this.eventDelegate.LeapEventNotiofination("OnFrame");
-        }
-
-
-        public override void OnExit(Controller controller)
-        {
-            this.eventDelegate.LeapEventNotiofination("OnExit");
-        }
-
-        public override void OnDisconnect(Controller controller)
-        {
-            this.eventDelegate.LeapEventNotiofination("OnDisconnect");
-        }
+        public override void OnDisconnect(Controller controller) => this.eventDelegate.LeapEventNotiofination("OnDisconnect");
     }
 }
 
