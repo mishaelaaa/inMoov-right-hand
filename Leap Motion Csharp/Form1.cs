@@ -24,12 +24,8 @@ namespace Leap_Motion_Csharp
 
             this.controller = new Controller();
             this.listener = new LeapEventListener(this);
-            NewMethod();
-        }
-
-        private void NewMethod()
-        {
-            controller.AddListener(listener);
+            SampleListener listener;
+            controller.addListener(listener);
         }
 
         delegate void LeapEventDelegate(string EventName);
@@ -61,7 +57,7 @@ namespace Leap_Motion_Csharp
 
     public class LeapEventListener : ConsoleTraceListener
     {
-        public LeapEventListener(Form1 form1) { }
+        public LeapEventListener(Form1 form1){ }
 
         readonly ILeapEventDelegate eventDelegate;
 
