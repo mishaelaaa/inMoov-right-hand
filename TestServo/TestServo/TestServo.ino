@@ -7,7 +7,7 @@
 #include <Servo.h>
 
 Servo myServo;  
-int const potPin = A0;  // analog pin used to connect the potentiometer
+int const potPin = A1;  // analog pin used to connect the potentiometer
 int potVal;				// variable to read the value from the analog pin
 int angle;				// variable to hold the angle for the servo motor
 
