@@ -20,7 +20,7 @@ void setup()
 void loop() 
 {
 	potVal = analogRead(potPin); // read the value of the potentiometer
-								 // print out the value to the Serial Monitor
+								               // print out the value to the Serial Monitor
 	Serial.print("potVal: ");
 	Serial.print(potVal);
 
@@ -37,7 +37,7 @@ void loop()
 	// wait for the servo to get there
 	delay(10);
 
-	ReadSensor();
+//	ReadSensor();
 }
 
 void ReadSensor()
@@ -46,7 +46,7 @@ void ReadSensor()
 
   for(int i = 0; i < 1000; i++) 
   {
-    value = ((analogRead(A0)-512)*20*2.5)/1023;
+    value = ((analogRead(A1)-512)*20*2.5)/1023;
     delay(1);
   }
 
