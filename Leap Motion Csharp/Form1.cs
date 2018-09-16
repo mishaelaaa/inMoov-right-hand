@@ -111,12 +111,12 @@ namespace Leap_Motion_Csharp
 
             else
             {
-                ServoRing.Clear();
-                ServoМiddle.Clear();
+               // ServoRing.Clear();
+              //  ServoМiddle.Clear();
                 Zpos.Clear();
                 Xpos.Clear();
-                ServoRing.AppendText("\n" + ServoRing.ToString("#.##"));
-                ServoМiddle.AppendText("\n" + ServoМiddle.ToString("#.##"));
+              //  ServoRing.AppendText("\n" + ServoRing.ToString("#.##"));
+              //  ServoМiddle.AppendText("\n" + ServoМiddle.ToString("#.##"));
                 Zpos.AppendText("\n" + FHandZ.ToString("#.##"));
                 Xpos.AppendText("\n" + FHandX.ToString("#.##"));
                 mag.AppendText("\n" + manitute.ToString("#.##"));

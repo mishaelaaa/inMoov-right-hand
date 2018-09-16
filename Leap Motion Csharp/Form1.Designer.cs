@@ -30,23 +30,23 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.Xpos = new System.Windows.Forms.MaskedTextBox();
+            this.mag = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.displayFPS = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox7 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox8 = new System.Windows.Forms.MaskedTextBox();
+            this.Ang = new System.Windows.Forms.MaskedTextBox();
+            this.Zpos = new System.Windows.Forms.MaskedTextBox();
+            this.displayHandCount = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.displayImages)).BeginInit();
             this.SuspendLayout();
             // 
             // displayImages
             // 
-            this.displayImages.Location = new System.Drawing.Point(137, 3);
+            this.displayImages.Location = new System.Drawing.Point(203, 3);
             this.displayImages.Margin = new System.Windows.Forms.Padding(4);
             this.displayImages.Name = "displayImages";
-            this.displayImages.Size = new System.Drawing.Size(756, 543);
+            this.displayImages.Size = new System.Drawing.Size(690, 543);
             this.displayImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.displayImages.TabIndex = 4;
             this.displayImages.TabStop = false;
@@ -63,135 +63,135 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 45);
+            this.label2.Location = new System.Drawing.Point(-2, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(94, 17);
             this.label2.TabIndex = 6;
-            this.label2.Text = "label2";
+            this.label2.Text = "Mag => Orgin";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 81);
+            this.label3.Location = new System.Drawing.Point(0, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.Size = new System.Drawing.Size(34, 17);
             this.label3.TabIndex = 7;
-            this.label3.Text = "label3";
+            this.label3.Text = "FPS";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 119);
+            this.label4.Location = new System.Drawing.Point(-1, 265);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.Size = new System.Drawing.Size(79, 17);
             this.label4.TabIndex = 8;
-            this.label4.Text = "label4";
+            this.label4.Text = "HandCount";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 157);
+            this.label5.Location = new System.Drawing.Point(0, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 17);
             this.label5.TabIndex = 9;
-            this.label5.Text = "label5";
+            this.label5.Text = "Z-Pos";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0, 198);
+            this.label6.Location = new System.Drawing.Point(-1, 158);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 17);
+            this.label6.Size = new System.Drawing.Size(60, 17);
             this.label6.TabIndex = 10;
-            this.label6.Text = "label6";
+            this.label6.Text = "tan(Z/X)";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(0, 236);
+            this.label7.Location = new System.Drawing.Point(0, 186);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.Size = new System.Drawing.Size(74, 17);
             this.label7.TabIndex = 11;
-            this.label7.Text = "label7";
+            this.label7.Text = "ServoRing";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(0, 275);
+            this.label8.Location = new System.Drawing.Point(0, 214);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 17);
+            this.label8.Size = new System.Drawing.Size(86, 17);
             this.label8.TabIndex = 12;
-            this.label8.Text = "label8";
+            this.label8.Text = "ServoМiddle";
             // 
-            // maskedTextBox1
+            // Xpos
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(52, 12);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(78, 22);
-            this.maskedTextBox1.TabIndex = 13;
+            this.Xpos.Location = new System.Drawing.Point(98, 12);
+            this.Xpos.Name = "Xpos";
+            this.Xpos.Size = new System.Drawing.Size(78, 22);
+            this.Xpos.TabIndex = 13;
             // 
-            // maskedTextBox2
+            // mag
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(53, 45);
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(78, 22);
-            this.maskedTextBox2.TabIndex = 14;
+            this.mag.Location = new System.Drawing.Point(97, 68);
+            this.mag.Name = "mag";
+            this.mag.Size = new System.Drawing.Size(78, 22);
+            this.mag.TabIndex = 14;
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(52, 275);
+            this.maskedTextBox3.Location = new System.Drawing.Point(98, 214);
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.Size = new System.Drawing.Size(78, 22);
             this.maskedTextBox3.TabIndex = 15;
             // 
-            // maskedTextBox4
+            // displayFPS
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(52, 81);
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(78, 22);
-            this.maskedTextBox4.TabIndex = 16;
+            this.displayFPS.Location = new System.Drawing.Point(98, 96);
+            this.displayFPS.Name = "displayFPS";
+            this.displayFPS.Size = new System.Drawing.Size(78, 22);
+            this.displayFPS.TabIndex = 16;
             // 
             // maskedTextBox5
             // 
-            this.maskedTextBox5.Location = new System.Drawing.Point(52, 236);
+            this.maskedTextBox5.Location = new System.Drawing.Point(98, 186);
             this.maskedTextBox5.Name = "maskedTextBox5";
             this.maskedTextBox5.Size = new System.Drawing.Size(78, 22);
             this.maskedTextBox5.TabIndex = 17;
             // 
-            // maskedTextBox6
+            // Ang
             // 
-            this.maskedTextBox6.Location = new System.Drawing.Point(52, 198);
-            this.maskedTextBox6.Name = "maskedTextBox6";
-            this.maskedTextBox6.Size = new System.Drawing.Size(78, 22);
-            this.maskedTextBox6.TabIndex = 18;
+            this.Ang.Location = new System.Drawing.Point(97, 158);
+            this.Ang.Name = "Ang";
+            this.Ang.Size = new System.Drawing.Size(78, 22);
+            this.Ang.TabIndex = 18;
             // 
-            // maskedTextBox7
+            // Zpos
             // 
-            this.maskedTextBox7.Location = new System.Drawing.Point(52, 157);
-            this.maskedTextBox7.Name = "maskedTextBox7";
-            this.maskedTextBox7.Size = new System.Drawing.Size(78, 22);
-            this.maskedTextBox7.TabIndex = 19;
+            this.Zpos.Location = new System.Drawing.Point(98, 40);
+            this.Zpos.Name = "Zpos";
+            this.Zpos.Size = new System.Drawing.Size(78, 22);
+            this.Zpos.TabIndex = 19;
             // 
-            // maskedTextBox8
+            // displayHandCount
             // 
-            this.maskedTextBox8.Location = new System.Drawing.Point(52, 119);
-            this.maskedTextBox8.Name = "maskedTextBox8";
-            this.maskedTextBox8.Size = new System.Drawing.Size(78, 22);
-            this.maskedTextBox8.TabIndex = 20;
+            this.displayHandCount.Location = new System.Drawing.Point(97, 265);
+            this.displayHandCount.Name = "displayHandCount";
+            this.displayHandCount.Size = new System.Drawing.Size(78, 22);
+            this.displayHandCount.TabIndex = 20;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 547);
-            this.Controls.Add(this.maskedTextBox8);
-            this.Controls.Add(this.maskedTextBox7);
-            this.Controls.Add(this.maskedTextBox6);
+            this.Controls.Add(this.displayHandCount);
+            this.Controls.Add(this.Zpos);
+            this.Controls.Add(this.Ang);
             this.Controls.Add(this.maskedTextBox5);
-            this.Controls.Add(this.maskedTextBox4);
+            this.Controls.Add(this.displayFPS);
             this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.mag);
+            this.Controls.Add(this.Xpos);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -221,13 +221,13 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox Xpos;
+        private System.Windows.Forms.MaskedTextBox mag;
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+        private System.Windows.Forms.MaskedTextBox displayFPS;
         private System.Windows.Forms.MaskedTextBox maskedTextBox5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox6;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox7;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox8;
+        private System.Windows.Forms.MaskedTextBox Ang;
+        private System.Windows.Forms.MaskedTextBox Zpos;
+        private System.Windows.Forms.MaskedTextBox displayHandCount;
     }
 }
