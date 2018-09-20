@@ -37,7 +37,7 @@ void loop()
 	// wait for the servo to get there
 	delay(10);
 
-//	ReadSensor();
+	ReadSensor();
 }
 
 void ReadSensor()
