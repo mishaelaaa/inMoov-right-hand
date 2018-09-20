@@ -34,7 +34,7 @@
             this.mag = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.displayFPS = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.AppendText = new System.Windows.Forms.MaskedTextBox();
             this.Ang = new System.Windows.Forms.MaskedTextBox();
             this.Zpos = new System.Windows.Forms.MaskedTextBox();
             this.displayHandCount = new System.Windows.Forms.MaskedTextBox();
@@ -151,12 +151,12 @@
             this.displayFPS.Size = new System.Drawing.Size(78, 22);
             this.displayFPS.TabIndex = 16;
             // 
-            // maskedTextBox5
+            // AppendText
             // 
-            this.maskedTextBox5.Location = new System.Drawing.Point(98, 186);
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(78, 22);
-            this.maskedTextBox5.TabIndex = 17;
+            this.AppendText.Location = new System.Drawing.Point(98, 186);
+            this.AppendText.Name = "AppendText";
+            this.AppendText.Size = new System.Drawing.Size(78, 22);
+            this.AppendText.TabIndex = 17;
             // 
             // Ang
             // 
@@ -187,7 +187,7 @@
             this.Controls.Add(this.displayHandCount);
             this.Controls.Add(this.Zpos);
             this.Controls.Add(this.Ang);
-            this.Controls.Add(this.maskedTextBox5);
+            this.Controls.Add(this.AppendText);
             this.Controls.Add(this.displayFPS);
             this.Controls.Add(this.maskedTextBox3);
             this.Controls.Add(this.mag);
@@ -225,7 +225,7 @@
         private System.Windows.Forms.MaskedTextBox mag;
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox displayFPS;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
+        private System.Windows.Forms.MaskedTextBox AppendText;
         private System.Windows.Forms.MaskedTextBox Ang;
         private System.Windows.Forms.MaskedTextBox Zpos;
         private System.Windows.Forms.MaskedTextBox displayHandCount;
