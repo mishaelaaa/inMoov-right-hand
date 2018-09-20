@@ -20,3 +20,6 @@ Before you start, you must have :
  * For some fun you can see what`s hapend in ```Leap Motion Visualizer``` or  ```Leap Motion Diagnostic Visualizer``` .
 
 I start with [this](https://developer-archive.leapmotion.com/documentation/csharp/devguide/Project_Setup.html) .
+
+Now I'm developing a program that accepts the coordinates of my true hand and makes the artificial hand stand in the same way.
+To this end, I started with servo motors that I am limiting through ACS712. This module is to judge the minimum and maximum values of the currents flowing through the servo that I will see through a simple example with a potentiometer.
