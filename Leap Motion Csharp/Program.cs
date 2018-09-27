@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.Threading;
 using Leap;
 
-namespace WinFormSample
+namespace Leap_Motion_Csharp
 {
     static class Program
     {
@@ -22,7 +22,7 @@ namespace WinFormSample
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrameDataForm());
+            Application.Run(new Form1());
         }
     }
 }

@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Threading;
 using System.Drawing.Imaging;
 using Leap;
+using LeapInternal;
 
 namespace Leap_Motion_Csharp
 {
     public partial class Form1 : Form
     {
-        private byte[] imagedata = new byte[1];
+        // Initialize the Controller object which connects to the Leap motion service
+        // and captures the hand tracking data
         private Controller controller = new Controller();
+        private byte[] imagedata = new byte[1];
         Bitmap bitmap = new Bitmap(640, 480, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
         public Form1()
@@ -24,26 +21,29 @@ namespace Leap_Motion_Csharp
             InitializeComponent();
             
             controller.EventContext = WindowsFormsSynchronizationContext.Current;
-            controller.FrameReady += newFrameHandler;
-            controller.ImageReady += onImageReady;
-            controller.ImageRequestFailed += onImageRequestFailed;
+            controller.FrameReady += NewFrameHandler;
+            controller.ImageReady += OnImageReady;
+            controller.ImageRequestFailed += OnImageRequestFailed;
 
             ColorPalette grayscale = bitmap.Palette;
             for (int i = 0; i < 256; i++)
             {
                 grayscale.Entries[i] = Color.FromArgb((int)255, i, i, i);
             }
+
             bitmap.Palette = grayscale;
         }
 
-        double FHandX = 0, FHandZ = 0, manitute = 0, angle = 0, ServoМiddle = 0, ServoRing = 0;
+        double FHandY = 0, FHandX = 0, FHandZ = 0, 
+               manitute = 0, angle = 0, 
+               ServoThumb = 0, ServoIndex = 0, ServoМiddle = 0, ServoRing = 0, ServoPinky = 0;
 
         int i = 0;
 
         //Start the Frame
-        void newFrameHandler(object sender, FrameEventArgs eventArgs)
+        void NewFrameHandler(object sender, FrameEventArgs eventArgs)
         {
-            Frame frame = eventArgs.frame;
+            Frame frame = controller.Frame();
             //The following are Label controls added in design view for the form
             this.displayFPS.Text = frame.CurrentFramesPerSecond.ToString();
             this.displayHandCount.Text = frame.Hands.Count.ToString();
@@ -125,8 +125,7 @@ namespace Leap_Motion_Csharp
             }
         }
 
- 
-        void onImageRequestFailed(object sender, ImageRequestFailedEventArgs e)
+        void OnImageRequestFailed(object sender, ImageRequestFailedEventArgs e)
         {
             if (e.reason == Leap.Image.RequestFailureReason.Insufficient_Buffer)
             {
@@ -135,7 +134,7 @@ namespace Leap_Motion_Csharp
             Console.WriteLine("Image request failed: " + e.message);
         }
 
-        void onImageReady(object sender, ImageEventArgs e)
+        void OnImageReady(object sender, ImageEventArgs e)
         {
             Rectangle lockArea = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
             BitmapData bitmapData = bitmap.LockBits(lockArea, ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
