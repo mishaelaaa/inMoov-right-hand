@@ -1,5 +1,7 @@
 ﻿using Leap;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
@@ -8,21 +10,12 @@ namespace Leap_Motion_Csharp
 {
     public partial class FrameDataForm : Form
     {
-        private byte[] imagedata = new byte[1];
-        private Controller controller = new Controller();
-        Bitmap bitmap = new Bitmap(640, 480, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
-
-        void newFrameHandler(object sender, FrameEventArgs eventArgs)
+        void Start()
         {
-            Frame frame = eventArgs.frame;
-            //The following are Label controls added in design view for the form
-            this.displayID.Text = frame.Id.ToString();
-            this.displayTimestamp.Text = frame.Timestamp.ToString();
-            this.displayFPS.Text = frame.CurrentFramesPerSecond.ToString();
-            this.displayHandCount.Text = frame.Hands.Count.ToString();
-
-            controller.RequestImages(frame.Id, Leap.Image.ImageType.DEFAULT, imagedata);
+            controller = new Controller();
         }
+
+        Controller controller;
 
         public FrameDataForm()
         {
@@ -39,6 +32,26 @@ namespace Leap_Motion_Csharp
                 grayscale.Entries[i] = Color.FromArgb((int)255, i, i, i);
             }
             bitmap.Palette = grayscale;
+        }
+
+        void newFrameHandler(object sender, FrameEventArgs eventArgs)
+        {
+            Frame frame = controller.Frame(); // controller is a Controller object
+            //The following are Label controls added in design view for the form
+            this.displayID.Text = frame.Id.ToString();
+            this.displayTimestamp.Text = frame.Timestamp.ToString();
+            this.displayFPS.Text = frame.CurrentFramesPerSecond.ToString();
+            this.displayHandCount.Text = frame.Hands.Count.ToString();
+
+
+            if (frame.Hands.Count > 0)
+            {
+                List<Hand> hands = frame.Hands;
+                Hand firstHand = hands[0];
+            }
+
+            controller.RequestImages(frame.Id, Leap.Image.ImageType.DEFAULT, imagedata);
+
         }
 
         void onImageRequestFailed(object sender, ImageRequestFailedEventArgs e)
