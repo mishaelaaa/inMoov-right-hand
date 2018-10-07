@@ -75,5 +75,10 @@ typedef void *__builtin_va_list;
 #define pgm_read_ptr(address_short)   short()
 
 #include "TestServo.ino"
+#include "ACS_Index.ino"
+#include "ACS_Middle.ino"
+#include "ACS_Pinky.ino"
+#include "ACS_Ring.ino"
+#include "ACS_Thumb.ino"
 #endif
 #endif

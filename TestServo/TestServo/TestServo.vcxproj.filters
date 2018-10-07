@@ -16,6 +16,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="TestServo.ino" />
+    <None Include="ACS_Thumb.ino">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="ACS_Index.ino">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="ACS_Middle.ino">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="ACS_Pinky.ino">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="ACS_Ring.ino">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.TestServo.vsarduino.h">
