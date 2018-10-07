@@ -10,12 +10,9 @@ namespace Leap_Motion_Csharp
 {
     public partial class FrameDataForm : Form
     {
-        void Start()
-        {
-            controller = new Controller();
-        }
-
-        Controller controller;
+        private byte[] imagedata = new byte[1];
+        private Controller controller = new Controller();
+        Bitmap bitmap = new Bitmap(640, 480, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
         public FrameDataForm()
         {
@@ -36,22 +33,14 @@ namespace Leap_Motion_Csharp
 
         void newFrameHandler(object sender, FrameEventArgs eventArgs)
         {
-            Frame frame = controller.Frame(); // controller is a Controller object
+            Frame frame = eventArgs.frame;
             //The following are Label controls added in design view for the form
             this.displayID.Text = frame.Id.ToString();
             this.displayTimestamp.Text = frame.Timestamp.ToString();
             this.displayFPS.Text = frame.CurrentFramesPerSecond.ToString();
             this.displayHandCount.Text = frame.Hands.Count.ToString();
 
-
-            if (frame.Hands.Count > 0)
-            {
-                List<Hand> hands = frame.Hands;
-                Hand firstHand = hands[0];
-            }
-
             controller.RequestImages(frame.Id, Leap.Image.ImageType.DEFAULT, imagedata);
-
         }
 
         void onImageRequestFailed(object sender, ImageRequestFailedEventArgs e)
@@ -72,5 +61,6 @@ namespace Leap_Motion_Csharp
             bitmap.UnlockBits(bitmapData);
             displayImages.Image = bitmap;
         }
+
     }
 }
