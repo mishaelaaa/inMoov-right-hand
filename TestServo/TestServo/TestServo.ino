@@ -13,7 +13,7 @@ Servo myServoRING;
 Servo myServoPINKY;
   
 int const potPin = A0;  // analog pin used to connect the potentiometer
-int potVal;				// variable to read the value from the analog pin
+int potVal;			      	// variable to read the value from the analog pin
 
 //Thumb
 int numReadingsThumb = 10;
@@ -51,7 +51,7 @@ int sensorMaxPinky = 0;
 int sensorMinPinky = 0;
 
 //angles
-int angleTHUMB;				// variable to hold the angle for the servo motor
+int angleTHUMB;	// variable to hold the angle for the servo motor
 int angleINDEX;       
 int angleMIDDLE;      
 int angleRING;       
@@ -97,11 +97,11 @@ void loop()
 	Serial.println(potVal);
 
 	//scale the numbers from the pot
-	angleTHUMB  = map(potVal, 0, sensorMaxThumb,  0, sensorMinThumb);
-	angleINDEX  = map(potVal, 0, sensorMaxIndex,  0, sensorMinIndex);
-	angleMIDDLE = map(potVal, 0, sensorMaxMiddle, 0, sensorMinMiddle);
-	angleRING   = map(potVal, 0, sensorMaxRing,   0, sensorMinRing);
-	anglePINKY  = map(potVal, 0, sensorMaxPinky,  0, sensorMinPinky);
+	angleTHUMB  = map(potVal, 0, 1023, 0, 179);
+	angleINDEX  = map(potVal, 0, 1023, 0, 179);
+	angleMIDDLE = map(potVal, 0, 1023, 0, 179);
+	angleRING   = map(potVal, 0, 1023, 0, 179);
+	anglePINKY  = map(potVal, 0, 1023, 0, 179);
 
 	// print out the angle for the servo motor
 	Serial.print("angleTHUMB: ");
@@ -127,15 +127,16 @@ void loop()
 	myServoPINKY.write(anglePINKY);
   
 	// wait for the servo to get there
-	delay(1);
+	delay(10);
 
   //Read funcs
-	ReadSensorTHUMB();
-	ReadSensorINDEX();
+	//ReadSensorTHUMB();
+	//ReadSensorINDEX();
 	ReadSensorMIDDLE();
-	ReadSensorRING();
-	ReadSensorPINKY();
+	//ReadSensorRING();
+	//ReadSensorPINKY();
 
+  delay(1000);
 }
 
 void ReadSensorTHUMB()
@@ -146,15 +147,19 @@ void ReadSensorTHUMB()
   int valueThumb = (((analogRead(A1)-512)*20*2.5)/1023)/4;
   readingsThumb[indexThumb] = valueThumb;
   indexThumb++;
-  if (indexThumb >= numReadingsThumb) indexThumb = 0;
+  if (indexThumb >= numReadingsThumb) 
+    indexThumb = 0;
 
   // DO SOME MATH
-  if (valueThumb > sensorMaxThumb) sensorMaxThumb = valueThumb;
-  if (valueThumb < sensorMinThumb) sensorMinThumb = valueThumb;
+  if (valueThumb > sensorMaxThumb) 
+    sensorMaxThumb = valueThumb;
+  if (valueThumb < sensorMinThumb) 
+    sensorMinThumb = valueThumb;
 
   //running average
   float totalThumb = 0;
-  for (int i = 0; i < numReadingsThumb; i++) totalThumb += readingsThumb[i];
+  for (int i = 0; i < numReadingsThumb; i++) 
+    totalThumb += readingsThumb[i];
   float averageThumb = totalThumb / numReadingsThumb;
 
   // OUTPUT TO SERIAL
